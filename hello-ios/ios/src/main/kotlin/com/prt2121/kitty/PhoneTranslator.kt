@@ -13,7 +13,6 @@ object PhoneTranslator {
         if (" -0123456789".contains(c)) {
           acc.plus(c)
         } else {
-          //acc.plus(c.toNumber())
           acc.concat(toNumber(c))
         }
       })
@@ -34,17 +33,4 @@ object PhoneTranslator {
     }
   }
 
-//  fun Char.toNumber(): String {
-//    when {
-//      "ABC".contains(this) -> return "2"
-//      "DEF".contains(this) -> return "3"
-//      "GHI".contains(this) -> return "4"
-//      "JKL".contains(this) -> return "5"
-//      "MNO".contains(this) -> return "6"
-//      "PQRS".contains(this) -> return "7"
-//      "TUV".contains(this) -> return "8"
-//      "WXYZ".contains(this) -> return "9"
-//      else -> return ""
-//    }
-//  }
 }

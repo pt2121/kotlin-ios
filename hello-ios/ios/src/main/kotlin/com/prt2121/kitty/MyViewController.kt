@@ -18,16 +18,16 @@ class MyViewController : UIViewController() {
 
   @IBAction
   private fun clickedTranslate() {
-    translatedNumber = PhoneTranslator.toNumber(textField?.getText())
+    translatedNumber = PhoneTranslator.toNumber(textField?.text)
     textField!!.resignFirstResponder()
     if(translatedNumber.isNullOrBlank()) {
       println("isNullOrBlank")
       callButton!!.setTitle("Call ", UIControlState.Normal)
-      callButton.setEnabled(false)
+      callButton.isEnabled = false
     } else {
       println(translatedNumber)
       callButton!!.setTitle("Call " + translatedNumber, UIControlState.Normal)
-      callButton.setEnabled(true)
+      callButton.isEnabled = true
     }
   }
 
