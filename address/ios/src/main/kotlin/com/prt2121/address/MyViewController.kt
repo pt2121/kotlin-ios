@@ -1,6 +1,9 @@
 package com.prt2121.address
 
-import org.robovm.apple.addressbook.*
+import org.robovm.apple.addressbook.ABAddressBook
+import org.robovm.apple.addressbook.ABAuthorizationStatus
+import org.robovm.apple.addressbook.ABPerson
+import org.robovm.apple.addressbook.ABPersonProperty
 import org.robovm.apple.addressbookui.ABPeoplePickerNavigationController
 import org.robovm.apple.addressbookui.ABPeoplePickerNavigationControllerDelegateAdapter
 import org.robovm.apple.dispatch.DispatchQueue
@@ -16,7 +19,6 @@ import java.util.*
 
 @CustomClass("MyViewController")
 class MyViewController : UIViewController() {
-  private val counterStore = CounterStore()
   private var addressBook: ABAddressBook? = null
 
   @IBOutlet
@@ -24,8 +26,7 @@ class MyViewController : UIViewController() {
 
   @IBAction
   private fun clicked() {
-    counterStore.add(1)
-    label!!.text = "Click Nr. " + counterStore.get()
+    //
     showPeoplePickerController()
   }
 
@@ -51,7 +52,6 @@ class MyViewController : UIViewController() {
     when (ABAddressBook.getAuthorizationStatus()) {
       ABAuthorizationStatus.Authorized ->
         println("Authorized")
-    //showPeoplePickerController()
       ABAuthorizationStatus.NotDetermined ->
         requestAddressBookAccess()
       ABAuthorizationStatus.Denied, ABAuthorizationStatus.Restricted -> {
@@ -73,7 +73,6 @@ class MyViewController : UIViewController() {
         if (granted) {
           DispatchQueue.getMainQueue().async(object : Runnable {
             override fun run() {
-              //showPeoplePickerController()
               println("Authorized")
             }
           })
@@ -87,33 +86,22 @@ class MyViewController : UIViewController() {
   /**
    * Called when users tap "Display Picker" in the application. Displays a
    * list of contacts and allows users to select a contact from that list. The
-   * application only shows the phone, email, and birthdate information of the
+   * application only shows the phone, email, and birthday information of the
    * selected contact.
    */
   private fun showPeoplePickerController() {
     val picker = ABPeoplePickerNavigationController()
     picker.peoplePickerDelegate = object : ABPeoplePickerNavigationControllerDelegateAdapter() {
-      /**
-       * Displays the information of a selected person.
-
-       * @param peoplePicker
-       * *
-       * @param person
-       * *
-       * @return
-       */
-      override fun shouldContinueAfterSelectingPerson(peoplePicker: ABPeoplePickerNavigationController?,
-                                                      person: ABPerson?): Boolean {
-        return true
+      override fun didSelectPerson(peoplePicker: ABPeoplePickerNavigationController?, person: ABPerson?) {
+        super.didSelectPerson(peoplePicker, person)
+        val numbers = person?.phoneNumbers?.joinToString(", ") { it.number }
+        println("didSelectPerson ${person?.firstName} $numbers")
+        label!!.text = "${person?.firstName}"
       }
 
-      /**
-       * Does not allow users to perform default actions such as dialing a
-       * phone number, when they select a person property.
-       */
       override fun shouldContinueAfterSelectingPerson(peoplePicker: ABPeoplePickerNavigationController?,
-                                                      person: ABPerson?, property: ABProperty?, identifier: Int): Boolean {
-        return false
+                                                      person: ABPerson?): Boolean {
+        return false //true
       }
 
       /**
