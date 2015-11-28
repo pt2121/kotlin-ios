@@ -194,8 +194,7 @@ class MainTableViewController : BaseTableViewController(), UISearchResultsUpdati
     when (status) {
       CNAuthorizationStatus.Authorized -> {
         contacts = fetchContacts("")
-        //contacts = fetchContacts("")
-        //tableView?.reloadData()
+        tableView?.reloadData()
       }
       CNAuthorizationStatus.NotDetermined, CNAuthorizationStatus.Denied -> {
         println("NotDetermined")
@@ -212,6 +211,7 @@ class MainTableViewController : BaseTableViewController(), UISearchResultsUpdati
     store.requestAccessForEntityType(CNEntityType.Contacts, { granted, error ->
       if (granted) {
         contacts = fetchContacts("")
+        tableView?.reloadData()
       } else {
         println(error.localizedFailureReason)
         println(error.localizedDescription)
