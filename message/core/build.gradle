@@ -1,0 +1,28 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id "me.tatarka.retrolambda" version "3.2.2"
+}
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+version 'unspecified'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
