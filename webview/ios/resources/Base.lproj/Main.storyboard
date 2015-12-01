@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rw5-ns-KcI">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--MyViewController-->
+        <scene sceneID="HF5-hW-DZA">
+            <objects>
+                <viewController title="MyViewController" id="Rw5-ns-KcI" customClass="MyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WrT-94-kTm"/>
+                        <viewControllerLayoutGuide type="bottom" id="GRf-jy-2iC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xOT-TG-81E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eT-2n-aTU">
+                                <rect key="frame" x="160" y="128" width="280" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="FGA-h8-tHG"/>
+                                    <constraint firstAttribute="height" constant="44" id="KAs-B5-4BP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" text="https://www.google.com" borderStyle="line" placeholder="Enter an address" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3HD-fo-xA2">
+                                <rect key="frame" x="20" y="28" width="560" height="32"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="KFI-D0-Yys"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Rw5-ns-KcI" id="YMn-Yw-8WG"/>
+                                </connections>
+                            </textField>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nh2-0Y-aEf">
+                                <rect key="frame" x="0.0" y="68" width="600" height="532"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Rw5-ns-KcI" id="fVb-QV-hVf"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nh2-0Y-aEf" firstAttribute="leading" secondItem="xOT-TG-81E" secondAttribute="leading" id="3ah-C8-b6I"/>
+                            <constraint firstItem="3HD-fo-xA2" firstAttribute="top" secondItem="WrT-94-kTm" secondAttribute="bottom" constant="8" symbolic="YES" id="K61-BL-RdC"/>
+                            <constraint firstItem="Nh2-0Y-aEf" firstAttribute="bottom" secondItem="GRf-jy-2iC" secondAttribute="top" id="Owa-2B-LIi"/>
+                            <constraint firstItem="3HD-fo-xA2" firstAttribute="centerX" secondItem="6eT-2n-aTU" secondAttribute="centerX" id="Z75-Cn-dkc"/>
+                            <constraint firstAttribute="centerY" secondItem="6eT-2n-aTU" secondAttribute="centerY" multiplier="2" id="ZYa-tH-0dQ"/>
+                            <constraint firstItem="Nh2-0Y-aEf" firstAttribute="centerX" secondItem="6eT-2n-aTU" secondAttribute="centerX" id="Zs5-Zx-ts1"/>
+                            <constraint firstAttribute="centerX" secondItem="6eT-2n-aTU" secondAttribute="centerX" id="ll8-9H-VGW"/>
+                            <constraint firstItem="Nh2-0Y-aEf" firstAttribute="top" secondItem="3HD-fo-xA2" secondAttribute="bottom" constant="8" symbolic="YES" id="me1-y0-Ji1"/>
+                            <constraint firstItem="3HD-fo-xA2" firstAttribute="leading" secondItem="xOT-TG-81E" secondAttribute="leadingMargin" id="pXb-gx-ngj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addressTextField" destination="3HD-fo-xA2" id="kNe-6o-AMu"/>
+                        <outlet property="webView" destination="Nh2-0Y-aEf" id="qZ4-Wj-0vU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MK6-Qu-SKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="507"/>
+        </scene>
+    </scenes>
+</document>
